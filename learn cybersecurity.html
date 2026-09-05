@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Cybersecurity Masterclass</title>
+    <style>
+        :root {
+            --bg-primary: #0a0e17;
+            --bg-secondary: #111827;
+            --card-bg: #1f2937;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent-green: #10b981;
+            --accent-blue: #3b82f6;
+            --accent-red: #ef4444;
+            --accent-purple: #8b5cf6;
+            --accent-yellow: #f59e0b;
+            --code-bg: #030712;
+            --border: #374151;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+        }
+
+        /* Sidebar Navigation */
+        nav {
+            width: 280px;
+            height: 100vh;
+            background-color: var(--bg-secondary);
+            position: fixed;
+            top: 0;
+            left: 0;
+            overflow-y: auto;
+            border-right: 1px solid var(--border);
+            padding: 20px 10px;
+        }
+
+        nav h2 {
+            font-size: 1.1rem;
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+            padding-left: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav li {
+            margin-bottom: 5px;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            display: block;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            transition: all 0.2s;
+        }
+
+        nav a:hover {
+            background-color: var(--card-bg);
+            color: var(--accent-green);
+        }
+
+        /* Main Content Area */
+        main {
+            margin-left: 280px;
+            padding: 40px;
+            max-width: 1100px;
+            width: 100%;
+        }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-blue);
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Module Sections */
+        .module {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 40px;
+        }
+
+        .module h2 {
+            font-size: 1.8rem;
+            color: var(--accent-green);
+            margin-bottom: 15px;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .module h3 {
+            font-size: 1.3rem;
+            color: var(--accent-purple);
+            margin: 20px 0 10px 0;
+        }
+
+        p {
+            margin-bottom: 15px;
+            color: #d1d5db;
+        }
+
+        ul, ol {
+            margin-bottom: 15px;
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        /* Code Blocks */
+        pre {
+            background-color: var(--code-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 15px;
+            overflow-x: auto;
+            margin: 15px 0;
+        }
+
+        code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            color: var(--accent-blue);
+            font-size: 0.9rem;
+        }
+
+        .inline-code {
+            background-color: var(--card-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent-yellow);
+        }
+
+        /* Callout Boxes */
+        .callout {
+            padding: 15px 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+
+        .callout-info {
+            background-color: rgba(59, 130, 246, 0.1);
+            border-color: var(--accent-blue);
+        }
+
+        .callout-warning {
+            background-color: rgba(239, 68, 68, 0.1);
+            border-color: var(--accent-red);
+        }
+
+        .callout-success {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-color: var(--accent-green);
+        }
+
+        .callout h4 {
+            margin-bottom: 5px;
+            font-size: 1rem;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th, td {
+            border: 1px solid var(--border);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--card-bg);
+            color: var(--accent-blue);
+        }
+
+        tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.02);
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <h2>Modules</h2>
+        <ul>
+            <li><a href="#cia-triad">1. CIA Triad & Core Concepts</a></li>
+            <li><a href="#networking">2. Networking Security & OSI</a></li>
+            <li><a href="#web-security">3. Web App Vulnerabilities (OWASP)</a></li>
+            <li><a href="#cryptography">4. Cryptography & Encryption</a></li>
+            <li><a href="#identity">5. Identity & Access Management</a></li>
+            <li><a href="#system-security">6. Endpoint & Malware Security</a></li>
+            <li><a href="#incident-response">7. Incident Response & Forensics</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <header>
+            <h1>Full-Spectrum Cybersecurity Academy</h1>
+            <p>An interactive, single-page reference guide covering fundamental to advanced cybersecurity domains.</p>
+        </header>
+
+        <section id="cia-triad" class="module">
+            <h2>Module 1: The Foundations & The CIA Triad</h2>
+            <p>At the heart of all information security principles lies the CIA Triad: Confidentiality, Integrity, and Availability. Every control, security tool, or policy aims to protect one or more of these pillars.</p>
+
+            <h3>The Three Pillars</h3>
+            <ul>
+                <li><strong>Confidentiality:</strong> Ensuring that data is accessible only to authorized personnel. (e.g., Encryption, Access Control Lists).</li>
+                <li><strong>Integrity:</strong> Guaranteeing that information is accurate, trustworthy, and has not been altered by unauthorized parties. (e.g., Hashing, Digital Signatures).</li>
+                <li><strong>Availability:</strong> Ensuring that systems, networks, and data are accessible to authorized users when needed. (e.g., Redundancy, DDoS Protection, Backups).</li>
+            </ul>
+
+            <div class="callout callout-info">
+                <h4>Key Takeaway</h4>
+                <p>Security is always a trade-off with usability. The goal is not to create an impenetrable system (which would be unusable), but to manage risk effectively while enabling operational capacity.</p>
+            </div>
+        </section>
+
+        <section id="networking" class="module">
+            <h2>Module 2: Networking Fundamentals & Protocols</h2>
+            <p>To defend a network, you must understand how data travels across interconnected systems. The OSI Model defines seven layers of abstraction for network communication.</p>
+
+            <h3>OSI Model Overview</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Layer</th>
+                        <th>Name</th>
+                        <th>Primary Protocols / Devices</th>
+                        <th>Security Mechanisms</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>7</td>
+                        <td>Application</td>
+                        <td>HTTP, HTTPS, FTP, DNS, SSH</td>
+                        <td>Web Application Firewalls (WAF), Input Sanitization</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Transport</td>
+                        <td>TCP, UDP</td>
+                        <td>Port Filtering, TLS Handshakes</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Network</td>
+                        <td>IP, ICMP, IPSec</td>
+                        <td>Network Firewalls, Routers, Subnetting</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Data Link</td>
+                        <td>Ethernet, ARP, Switches</td>
+                        <td>MAC Filtering, Port Security, 802.1X</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Common Attack Vectors in Networking</h3>
+            <ul>
+                <li><strong>Man-in-the-Middle (MitM):</strong> An attacker intercepts communication between two parties (e.g., via ARP Spoofing).</li>
+                <li><strong>DNS Spoofing:</strong> Poisoning DNS caches to redirect legitimate traffic to malicious IP addresses.</li>
+            </ul>
+        </section>
+
+        <section id="web-security" class="module">
+            <h2>Module 3: Web Application Security & OWASP Top 10</h2>
+            <p>Web applications are exposed to the public internet and represent a massive attack surface. The Open Web Application Security Project (OWASP) highlights the most critical risks.</p>
+
+            <h3>1. SQL Injection (SQLi)</h3>
+            <p>Occurs when untrusted user input is directly concatenated into a database query.</p>
+            
+            <div class="callout callout-warning">
+                <h4>Vulnerable Code Example (Node.js/SQL)</h4>
+                <pre><code>// UNSAFE: Direct string concatenation allows input like " ' OR '1'='1 "
+const query = `SELECT * FROM users WHERE username = '${req.body.username}' AND password = '${req.body.password}'`;
+db.query(query);</code></pre>
+            </div>
+
+            <div class="callout callout-success">
+                <h4>Secure Remediation (Parameterized Query)</h4>
+                <pre><code>// SAFE: Uses placeholders to separate code from execution data
+const query = `SELECT * FROM users WHERE username = ? AND password = ?`;
+db.query(query, [req.body.username, req.body.password]);</code></pre>
+            </div>
+
+            <h3>2. Cross-Site Scripting (XSS)</h3>
+            <p>Occurs when an attacker injects malicious JavaScript into data sent to other web users.</p>
+            <ul>
+                <li><strong>Stored XSS:</strong> The script is permanently stored in a database (e.g., in a comment section).</li>
+                <li><strong>Reflected XSS:</strong> The script is reflected off the web server in an error message or search result.</li>
+            </ul>
+        </section>
+
+        <section id="cryptography" class="module">
+            <h2>Module 4: Cryptography & Data Protection</h2>
+            <p>Cryptography provides mechanisms to protect confidentiality and integrity using mathematical algorithms.</p>
+
+            <h3>Types of Cryptography</h3>
+            <ul>
+                <li><strong>Symmetric Encryption:</strong> Uses a single secret key for both encryption and decryption. Fast and efficient for large data sets. <em>Example: AES-256.</em></li>
+                <li><strong>Asymmetric Encryption:</strong> Uses a key pair: a public key for encryption and a private key for decryption. <em>Example: RSA, ECC.</em></li>
+                <li><strong>Cryptographic Hashing:</strong> A one-way deterministic function that maps input to a fixed-length string. Used to verify integrity. <em>Example: SHA-256.</em></li>
+            </ul>
+
+            <h3>Hashing vs Encryption</h3>
+            <pre><code>// Hashing (One-Way)
+Input:  "Pass123!" --(SHA-256)--> Output: "e80b5017098950fc58aad83c8c14978e..."
+Note: You CANNOT reverse the output back to "Pass123!".
+
+// Encryption (Two-Way)
+Plaintext: "Secret Message" --(Encrypt with Key)--> Ciphertext: "a8f9d3k2"
+Ciphertext: "a8f9d3k2"       --(Decrypt with Key)--> Plaintext: "Secret Message"</code></pre>
+        </section>
+
+        <section id="identity" class="module">
+            <h2>Module 5: Identity & Access Management (IAM)</h2>
+            <p>IAM ensures the right entities have access to the right resources at the right time for the right reasons.</p>
+
+            <h3>Core Frameworks</h3>
+            <ul>
+                <li><strong>AAA Framework:</strong> Authentication (Who are you?), Authorization (What are you allowed to do?), Accounting (What did you do?).</li>
+                <li><strong>Multi-Factor Authentication (MFA):</strong> Requiring two or more proof factors:
+                    <ul>
+                        <li><em>Something you know:</em> Password, PIN</li>
+                        <li><em>Something you have:</em> Security token, Authenticator App</li>
+                        <li><em>Something you are:</em> Biometrics (Fingerprint, Facial Recognition)</li>
+                    </ul>
+                </li>
+                <li><strong>Principle of Least Privilege (PoLP):</strong> Users and systems should only be granted the minimum permissions strictly necessary to complete their operational tasks.</li>
+            </ul>
+        </section>
+
+        <section id="system-security" class="module">
+            <h2>Module 6: Endpoint Security & Malware Analysis</h2>
+            <p>Endpoints (workstations, servers, mobile devices) are primary targets for malicious actors seeking entry into enterprise networks.</p>
+
+            <h3>Common Malware Categories</h3>
+            <ul>
+                <li><strong>Ransomware:</strong> Encrypts victim files and demands payment for the decryption key.</li>
+                <li><strong>Trojan:</strong> Disguises itself as legitimate software to trick users into executing it.</li>
+                <li><strong>Keylogger:</strong> Monitored software or hardware that records keystrokes to steal credentials.</li>
+                <li><strong>Worm:</strong> Self-replicating malware that spreads across networks without human interaction.</li>
+            </ul>
+
+            <h3>Hardening Controls</h3>
+            <ul>
+                <li>Implement Endpoint Detection and Response (EDR) solutions.</li>
+                <li>Enforce full-disk encryption (e.g., BitLocker, FileVault).</li>
+                <li>Disable unnecessary services and ports.</li>
+                <li>Maintain automated patch management pipelines.</li>
+            </ul>
+        </section>
+
+        <section id="incident-response" class="module">
+            <h2>Module 7: Incident Response Lifecycle</h2>
+            <p>When a breach occurs, structured incident response limits damage and reduces recovery time and cost.</p>
+
+            <h3>NIST Incident Response Steps</h3>
+            <ol>
+                <li><strong>Preparation:</strong> Establishing policies, communication plans, and securing tools before an incident occurs.</li>
+                <li><strong>Detection & Analysis:</strong> Monitoring alerts, identifying anomalies, and verifying whether a breach has occurred.</li>
+                <li><strong>Containment, Eradication, & Recovery:</strong>
+                    <ul>
+                        <li><em>Containment:</em> Isolating affected systems to prevent spread.</li>
+                        <li><em>Eradication:</em> Removing threat artifacts (malware, unauthorized user accounts).</li>
+                        <li><em>Recovery:</em> Restoring systems from trusted backups back into production.</li>
+                    </ul>
+                </li>
+                <li><strong>Post-Incident Activity:</strong> Documenting lessons learned to improve future security posture.</li>
+            </ol>
+        </section>
+
+    </main>
+
+</body>
+</html>
